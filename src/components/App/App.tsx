@@ -1,7 +1,7 @@
 import css from'./App.module.css'
 import { useState, useEffect } from 'react'
 import toast, { Toaster } from 'react-hot-toast';
-import { useQuery } from '@tanstack/react-query';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import ReactPaginate from 'react-paginate';
 import type { Movie } from '../../types/movie';
 import { fetchMovies } from '../../services/movieService';
@@ -21,6 +21,7 @@ export default function App() {
     queryKey: ['movies', query, page],
     queryFn: () => fetchMovies(query, page),
     enabled: query !== '',
+    placeholderData: keepPreviousData
   });
   useEffect(() => {
     if (data?.results.length === 0) {
