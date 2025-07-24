@@ -24,15 +24,15 @@ export default function App() {
     placeholderData: keepPreviousData
   });
   useEffect(() => {
-    if (data?.results.length === 0) {
+    if (isSuccess && data?.results.length === 0) {
       toast("No movies found for your request");
     }
-  }, [data]);
+  }, [data, isSuccess]);
 
   const totalPages = data?.total_pages ?? 0;
   
 
-  const handleSearch = async (newQuery: string) => {
+  const handleSearch = (newQuery: string) => {
     setQuery(newQuery);
     setPage(1);
   

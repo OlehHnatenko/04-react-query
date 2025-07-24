@@ -12,7 +12,7 @@ axios.defaults.baseURL = "https://api.themoviedb.org/3";
 
 export const fetchMovies = async (query: string, page: number): Promise<FetchMoviesResponse> => {
 
-    const response = await axios.get(
+    const response = await axios.get<FetchMoviesResponse>(
         '/search/movie',
         {
             params: {
